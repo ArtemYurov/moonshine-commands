@@ -2,25 +2,35 @@
 
 > AI-powered development toolkit for MoonShine - Inspired by GitHub Speckit
 
-MoonShine Skills is a CLI tool that brings AI-powered development assistance to your MoonShine projects. Install guidelines and slash commands that help AI agents (like Claude) understand MoonShine components and generate production-ready code.
+MoonShine Skills is a CLI tool that brings AI-powered development assistance to your MoonShine projects. Install guidelines and skills that help AI agents (like Claude) understand MoonShine components and generate production-ready code.
 
 ## ✨ Features
 
 - 🤖 **AI Agent Integration** - Works with Claude Code (more agents coming soon)
 - 📚 **Comprehensive Guidelines** - Complete MoonShine component documentation
-- ⚡ **Slash Commands** - Easy-to-use commands for common tasks
+- ⚡ **Skills** - Easy-to-use skills for common tasks
 - 🎯 **Production Ready** - Generates code following best practices
-- 🔄 **Auto-sync** - Keep guidelines and commands up-to-date
+- 🔄 **Auto-sync** - Keep guidelines and skills up-to-date
 
 ## 🚀 Quick Start
 
 ### Installation
 
-Run via `npx` directly from this repository — no global install required:
+You can install MoonShine Skills globally or run it on-demand via `npx`.
+
+#### Option 1: Install Globally
+
+```bash
+npm install -g moonshine-software/moonshine-skills
+cd your-moonshine-project
+moonshine-skills init
+```
+
+#### Option 2: Run via `npx` (no install)
 
 ```bash
 cd your-moonshine-project
-npx github:ArtemYurov/moonshine-skills init
+npx moonshine-software/moonshine-skills init
 ```
 
 Note: The folder must be owned by the current user.
@@ -42,17 +52,18 @@ your-moonshine-project/
 │       ├── moonshine-field/SKILL.md
 │       └── moonshine-component/SKILL.md
 └── .guidelines/                # Shared guidelines
-    ├── blade-components.md
-    ├── palettes.md
-    ├── fields-development.md
-    └── components-development.md
+    └── moonshine/
+        ├── blade-components.md
+        ├── palettes.md
+        ├── fields-development.md
+        └── components-development.md
 ```
 
 ## 📖 Usage
 
 ### Available Commands
 
-After initialization, you can use these slash commands in Claude:
+After initialization, you can invoke these skills in Claude (also available as slash commands):
 
 #### `/moonshine-components` - Work with Components
 
@@ -165,11 +176,11 @@ Initialize MoonShine Skills in your project.
 **Options:**
 - Interactive agent selection
 - Automatic directory creation
-- Downloads latest commands and guidelines
+- Downloads latest skills and guidelines
 
 ### `moonshine-skills update` (Coming Soon)
 
-Update commands and guidelines to the latest version.
+Update skills and guidelines to the latest version.
 
 ### `moonshine-skills status` (Coming Soon)
 
@@ -251,17 +262,17 @@ The AI will generate:
 ├─────────────────────────────────────────┤
 │  .claude/skills/                        │
 │  ├── moonshine-components/SKILL.md      │
-│  │   → Reads .guidelines/               │
+│  │   → Reads .guidelines/moonshine/     │
 │  ├── moonshine-layout/SKILL.md          │
-│  │   → Reads .guidelines/               │
+│  │   → Reads .guidelines/moonshine/     │
 │  ├── moonshine-palettes/SKILL.md        │
-│  │   → Reads .guidelines/               │
+│  │   → Reads .guidelines/moonshine/     │
 │  ├── moonshine-field/SKILL.md           │
-│  │   → Reads .guidelines/               │
+│  │   → Reads .guidelines/moonshine/     │
 │  └── moonshine-component/SKILL.md       │
-│      → Reads .guidelines/               │
+│      → Reads .guidelines/moonshine/     │
 │                                         │
-│  .guidelines/                           │
+│  .guidelines/moonshine/                 │
 │  ├── blade-components.md               │
 │  ├── palettes.md                       │
 │  ├── fields-development.md             │
@@ -271,13 +282,13 @@ The AI will generate:
 
 ## 🔄 Update Process
 
-Guidelines and commands are downloaded from the official repository:
+Guidelines and skills are downloaded from the official repository:
 ```
-https://github.com/ArtemYurov/moonshine-skills
+https://github.com/moonshine-software/moonshine-skills
 ```
 
 When you run `moonshine-skills init`, it fetches:
-- Latest command files for your selected agent
+- Latest skill files for your selected agent
 - Latest guideline files
 - Ensures you have the most up-to-date documentation
 
@@ -286,13 +297,13 @@ When you run `moonshine-skills init`, it fetches:
 ### "composer.json not found"
 Make sure you're in your Laravel/MoonShine project root directory.
 
-### Commands not appearing in Claude
+### Skills not appearing in Claude
 1. Restart Claude Code
-2. Check that files were created in `.claude/commands/`
+2. Check that files were created in `.claude/skills/`
 3. Verify slash commands with `/` in Claude
 
 ### Guidelines not being followed
-Make sure the AI agent can access `.guidelines/` directory. Commands are configured to read from this location.
+Make sure the AI agent can access `.guidelines/moonshine/` directory. Skills are configured to read from this location.
 
 ## 📦 Package Development
 
@@ -300,7 +311,7 @@ Make sure the AI agent can access `.guidelines/` directory. Commands are configu
 
 ```bash
 # Clone repository
-git clone https://github.com/ArtemYurov/moonshine-skills.git
+git clone https://github.com/moonshine-software/moonshine-skills.git
 cd moonshine-skills
 
 # Install dependencies
@@ -332,8 +343,8 @@ MIT License - see LICENSE file for details.
 ## 🔗 Links
 
 - [MoonShine Documentation](https://moonshine-laravel.com)
-- [GitHub Repository](https://github.com/ArtemYurov/moonshine-skills)
-- [Report Issues](https://github.com/ArtemYurov/moonshine-skills/issues)
+- [GitHub Repository](https://github.com/moonshine-software/moonshine-skills)
+- [Report Issues](https://github.com/moonshine-software/moonshine-skills/issues)
 
 ---
 

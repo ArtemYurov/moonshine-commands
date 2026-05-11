@@ -27,12 +27,6 @@ export interface DownloadResult {
   errors: string[];
 }
 
-export interface CommandFile {
-  name: string;
-  path: string;
-  content: string;
-}
-
 export interface GuidelineFile {
   name: string;
   path: string;

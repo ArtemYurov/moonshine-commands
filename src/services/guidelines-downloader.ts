@@ -3,8 +3,8 @@ import { join } from 'path';
 import fetch from 'node-fetch';
 import type { InitConfig, DownloadResult } from '../types/index.js';
 
-const REPO_RAW_URL = 'https://raw.githubusercontent.com/ArtemYurov/moonshine-skills/main';
-const REPO_API_URL = 'https://api.github.com/repos/ArtemYurov/moonshine-skills/contents/guidelines';
+const REPO_RAW_URL = 'https://raw.githubusercontent.com/moonshine-software/moonshine-skills/main';
+const REPO_API_URL = 'https://api.github.com/repos/moonshine-software/moonshine-skills/contents/guidelines/moonshine';
 
 interface GitHubContentItem {
   name: string;
@@ -29,7 +29,7 @@ async function fetchGuidelineFileList(): Promise<string[]> {
 }
 
 export async function downloadGuidelines(config: InitConfig): Promise<DownloadResult> {
-  const guidelinesDir = join(config.projectPath, '.guidelines');
+  const guidelinesDir = join(config.projectPath, '.guidelines', 'moonshine');
 
   const errors: string[] = [];
   let filesDownloaded = 0;
@@ -47,7 +47,7 @@ export async function downloadGuidelines(config: InitConfig): Promise<DownloadRe
 
   for (const fileName of fileNames) {
     try {
-      const url = `${REPO_RAW_URL}/guidelines/${fileName}`;
+      const url = `${REPO_RAW_URL}/guidelines/moonshine/${fileName}`;
       const response = await fetch(url);
 
       if (!response.ok) {

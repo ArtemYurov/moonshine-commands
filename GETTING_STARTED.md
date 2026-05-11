@@ -5,13 +5,21 @@ Welcome to MoonShine Skills! This guide will help you set up and start using AI-
 ## What is MoonShine Skills?
 
 MoonShine Skills is a CLI tool inspired by GitHub Speckit that brings AI assistance to MoonShine development. It installs:
-- **Slash commands** for your AI agent (Claude, Cursor, etc.)
+- **Skills** for your AI agent (Claude, Cursor, etc.) — invokable as slash commands
 - **Comprehensive guidelines** about MoonShine components
 - **Best practices** to generate production-ready code
 
 ## Installation
 
-### Step 1: Navigate to Your Project
+### Step 1: Install Globally (optional)
+
+```bash
+npm install -g moonshine-software/moonshine-skills
+```
+
+After a global install you can run `moonshine-skills init` from any project.
+
+### Step 2: Navigate to Your Project
 
 ```bash
 cd /path/to/your-moonshine-project
@@ -19,13 +27,21 @@ cd /path/to/your-moonshine-project
 
 Make sure you're in the root directory with `composer.json`.
 
-### Step 2: Initialize via `npx`
+### Step 3: Initialize
+
+If you installed globally:
 
 ```bash
-npx github:ArtemYurov/moonshine-skills init
+moonshine-skills init
 ```
 
-No global install required — `npx` runs the CLI directly from this repository on every invocation.
+Or run on-demand via `npx` without installing:
+
+```bash
+npx moonshine-software/moonshine-skills init
+```
+
+`npx` fetches and runs the CLI directly from the repository on every invocation.
 
 You'll see:
 ```
@@ -43,7 +59,7 @@ Select your AI agent (currently only Claude is supported).
 
 The tool will:
 1. Create `.claude/skills/` directory
-2. Create `.guidelines/` directory
+2. Create `.guidelines/moonshine/` directory
 3. Download latest skills from GitHub
 4. Download latest guidelines from GitHub
 
@@ -60,7 +76,7 @@ ls -la .claude/skills/
 # moonshine-field/
 # moonshine-component/
 
-ls -la .guidelines/
+ls -la .guidelines/moonshine/
 # Should show:
 # blade-components.md
 # palettes.md
@@ -79,7 +95,7 @@ ls -la .guidelines/
    ```
 
 3. **Claude will:**
-   - Read the guidelines from `.guidelines/blade-components.md`
+   - Read the guidelines from `.guidelines/moonshine/blade-components.md`
    - Understand your request
    - Generate proper MoonShine code
    - Follow all best practices
@@ -213,7 +229,7 @@ Claude will generate a complete color palette with both light and dark themes!
 
 ## Understanding the Guidelines
 
-The `.guidelines/` directory contains comprehensive documentation:
+The `.guidelines/moonshine/` directory contains comprehensive documentation:
 
 ### `blade-components.md`
 
@@ -265,13 +281,13 @@ Color system and theme customization:
 
 ## Troubleshooting
 
-### Commands Not Showing Up
+### Skills Not Showing Up
 
 **Problem:** Can't see slash commands in Claude
 
 **Solution:**
 1. Restart Claude Code
-2. Verify files exist: `ls .claude/commands/`
+2. Verify files exist: `ls .claude/skills/`
 3. Check file permissions
 4. Try typing `/` to see available commands
 
@@ -280,7 +296,7 @@ Color system and theme customization:
 **Problem:** Generated code doesn't follow MoonShine patterns
 
 **Solution:**
-1. Verify `.guidelines/` directory exists
+1. Verify `.guidelines/moonshine/` directory exists
 2. Check guidelines files are present
 3. Be more specific in your prompts
 4. Reference specific components by name
@@ -296,7 +312,7 @@ Color system and theme customization:
 ## Next Steps
 
 1. **Explore the Guidelines**
-   - Read `.guidelines/blade-components.md`
+   - Read `.guidelines/moonshine/blade-components.md`
    - Understand available components
    - See examples and patterns
 
@@ -318,9 +334,9 @@ Color system and theme customization:
 ## Resources
 
 - **Documentation**: [README.md](README.md)
-- **GitHub**: https://github.com/ArtemYurov/moonshine-skills
+- **GitHub**: https://github.com/moonshine-software/moonshine-skills
 - **MoonShine Docs**: https://moonshine-laravel.com
-- **Issues**: https://github.com/ArtemYurov/moonshine-skills/issues
+- **Issues**: https://github.com/moonshine-software/moonshine-skills/issues
 
 ## Support
 

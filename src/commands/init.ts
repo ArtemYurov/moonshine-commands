@@ -44,7 +44,7 @@ export async function initCommand() {
   try {
     const agentConfig = getAgentConfig(answers.agent);
     const skillsDir = join(cwd, agentConfig.skillsDir);
-    const guidelinesDir = join(cwd, '.guidelines');
+    const guidelinesDir = join(cwd, '.guidelines', 'moonshine');
 
     if (!existsSync(skillsDir)) {
       mkdirSync(skillsDir, { recursive: true });
