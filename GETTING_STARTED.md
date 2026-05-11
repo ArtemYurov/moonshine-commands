@@ -156,6 +156,8 @@ Create or modify a custom color palette using OKLCH color space.
 /moonshine-palette modify the existing palette to use green as primary color (hue 142)
 ```
 
+> 💡 **Tip:** In Claude Code you can paste a screenshot or drag an image into the prompt — a brand book, an existing UI, a logo, a Dribbble/Figma reference, or a mood board. Claude will read the dominant and accent colors from the image and derive the OKLCH palette from them.
+
 ## What Gets Generated
 
 When you use MoonShine Skills commands, Claude generates code that:

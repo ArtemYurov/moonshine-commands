@@ -101,6 +101,8 @@ Create or modify a custom color palette using OKLCH color space (one palette wit
 /moonshine-palette create a purple palette for dark and light themes
 ```
 
+> 💡 **Tip:** In Claude Code you can paste a screenshot or drag an image into the prompt — a brand book, an existing UI, a logo, a Dribbble/Figma reference, or a mood board. Claude will read the dominant and accent colors from the image and derive the OKLCH palette from them.
+
 #### `/moonshine-field` - Create Custom Fields
 
 Create custom MoonShine fields with proper structure and methods:
