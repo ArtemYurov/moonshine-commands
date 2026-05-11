@@ -21,7 +21,7 @@ You can install MoonShine Skills globally or run it on-demand via `npx`.
 #### Option 1: Install Globally
 
 ```bash
-npm install -g moonshine-software/moonshine-skills
+npm install -g ArtemYurov/moonshine-skills#test
 cd your-moonshine-project
 moonshine-skills init
 ```
@@ -30,7 +30,7 @@ moonshine-skills init
 
 ```bash
 cd your-moonshine-project
-npx moonshine-software/moonshine-skills init
+npx ArtemYurov/moonshine-skills#test init
 ```
 
 Note: The folder must be owned by the current user.
@@ -284,7 +284,7 @@ The AI will generate:
 
 Guidelines and skills are downloaded from the official repository:
 ```
-https://github.com/moonshine-software/moonshine-skills
+https://github.com/ArtemYurov/moonshine-skills
 ```
 
 When you run `moonshine-skills init`, it fetches:
@@ -311,7 +311,7 @@ Make sure the AI agent can access `.guidelines/moonshine/` directory. Skills are
 
 ```bash
 # Clone repository
-git clone https://github.com/moonshine-software/moonshine-skills.git
+git clone https://github.com/ArtemYurov/moonshine-skills.git
 cd moonshine-skills
 
 # Install dependencies
@@ -343,8 +343,8 @@ MIT License - see LICENSE file for details.
 ## 🔗 Links
 
 - [MoonShine Documentation](https://moonshine-laravel.com)
-- [GitHub Repository](https://github.com/moonshine-software/moonshine-skills)
-- [Report Issues](https://github.com/moonshine-software/moonshine-skills/issues)
+- [GitHub Repository](https://github.com/ArtemYurov/moonshine-skills)
+- [Report Issues](https://github.com/ArtemYurov/moonshine-skills/issues)
 
 ---
 

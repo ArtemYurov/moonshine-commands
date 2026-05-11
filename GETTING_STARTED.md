@@ -14,7 +14,7 @@ MoonShine Skills is a CLI tool inspired by GitHub Speckit that brings AI assista
 ### Step 1: Install Globally (optional)
 
 ```bash
-npm install -g moonshine-software/moonshine-skills
+npm install -g ArtemYurov/moonshine-skills#test
 ```
 
 After a global install you can run `moonshine-skills init` from any project.
@@ -38,7 +38,7 @@ moonshine-skills init
 Or run on-demand via `npx` without installing:
 
 ```bash
-npx moonshine-software/moonshine-skills init
+npx ArtemYurov/moonshine-skills#test init
 ```
 
 `npx` fetches and runs the CLI directly from the repository on every invocation.
@@ -334,9 +334,9 @@ Color system and theme customization:
 ## Resources
 
 - **Documentation**: [README.md](README.md)
-- **GitHub**: https://github.com/moonshine-software/moonshine-skills
+- **GitHub**: https://github.com/ArtemYurov/moonshine-skills
 - **MoonShine Docs**: https://moonshine-laravel.com
-- **Issues**: https://github.com/moonshine-software/moonshine-skills/issues
+- **Issues**: https://github.com/ArtemYurov/moonshine-skills/issues
 
 ## Support
 

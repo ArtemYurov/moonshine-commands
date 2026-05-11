@@ -34,12 +34,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moonshine-software/moonshine-skills"
+    "url": "https://github.com/ArtemYurov/moonshine-skills"
   },
   "bugs": {
-    "url": "https://github.com/moonshine-software/moonshine-skills/issues"
+    "url": "https://github.com/ArtemYurov/moonshine-skills/issues"
   },
-  "homepage": "https://github.com/moonshine-software/moonshine-skills#readme",
+  "homepage": "https://github.com/ArtemYurov/moonshine-skills#readme",
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
