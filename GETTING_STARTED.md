@@ -70,9 +70,9 @@ Check that these directories were created:
 ```bash
 ls -la .claude/skills/
 # Should show:
-# moonshine-components/
+# moonshine-custom-blade/
 # moonshine-layout/
-# moonshine-palettes/
+# moonshine-palette/
 # moonshine-field/
 # moonshine-component/
 
@@ -91,7 +91,7 @@ ls -la .guidelines/moonshine/
 2. **Use slash commands** by typing `/` followed by the command name:
 
    ```
-   /moonshine-components create a user table with actions
+   /moonshine-custom-blade create a user table with actions
    ```
 
 3. **Claude will:**
@@ -102,22 +102,22 @@ ls -la .guidelines/moonshine/
 
 ### Available Commands
 
-#### `/moonshine-components`
+#### `/moonshine-custom-blade`
 
-Create any MoonShine component with proper structure.
+Build MoonShine admin panel UI with Blade components (tables, forms, cards, modals, navigation, layouts).
 
 **Examples:**
 
 ```
-/moonshine-components create a table with user data, status badges, and edit/delete buttons
+/moonshine-custom-blade create a table with user data, status badges, and edit/delete buttons
 ```
 
 ```
-/moonshine-components create a modal form for creating new products with fields: name, price, description
+/moonshine-custom-blade create a modal form for creating new products with fields: name, price, description
 ```
 
 ```
-/moonshine-components create a card with metrics showing total users, revenue, and orders
+/moonshine-custom-blade create a card with metrics showing total users, revenue, and orders
 ```
 
 #### `/moonshine-layout`
@@ -138,22 +138,22 @@ Generate complete layouts with navigation.
 /moonshine-layout create a responsive layout with mobile menu support
 ```
 
-#### `/moonshine-palettes`
+#### `/moonshine-palette`
 
-Create and modify custom color palettes using OKLCH color space.
+Create or modify a custom color palette using OKLCH color space.
 
 **Examples:**
 
 ```
-/moonshine-palettes create a blue ocean theme with hue 240
+/moonshine-palette create a blue ocean theme with hue 240
 ```
 
 ```
-/moonshine-palettes create a purple palette for dark and light themes
+/moonshine-palette create a purple palette for dark and light themes
 ```
 
 ```
-/moonshine-palettes modify the existing palette to use green as primary color (hue 142)
+/moonshine-palette modify the existing palette to use green as primary color (hue 142)
 ```
 
 ## What Gets Generated
@@ -194,7 +194,7 @@ Claude will generate a complete layout with proper structure.
 ### 2. Create the Users Table
 
 ```
-/moonshine-components create a users table with columns:
+/moonshine-custom-blade create a users table with columns:
 - ID
 - Avatar (image)
 - Name
@@ -211,7 +211,7 @@ Claude will create a table with all MoonShine components properly integrated.
 ### 3. Add a Form Modal
 
 ```
-/moonshine-components create a modal for adding new users with fields:
+/moonshine-custom-blade create a modal for adding new users with fields:
 - Name (text input)
 - Email (email input)
 - Role (select: Admin, Editor, User)
@@ -222,7 +222,7 @@ Claude will create a table with all MoonShine components properly integrated.
 ### 4. Create a Custom Palette
 
 ```
-/moonshine-palettes create a professional blue palette with hue 240 for the admin panel
+/moonshine-palette create a professional blue palette with hue 240 for the admin panel
 ```
 
 Claude will generate a complete color palette with both light and dark themes!
@@ -317,7 +317,7 @@ Color system and theme customization:
    - See examples and patterns
 
 2. **Try Simple Commands**
-   - Start with `/moonshine-components`
+   - Start with `/moonshine-custom-blade`
    - Create a simple table or form
    - Get familiar with the workflow
 

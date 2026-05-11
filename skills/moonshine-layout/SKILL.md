@@ -13,7 +13,7 @@ You are an expert MoonShine developer specializing in layout creation. Your task
 
 ## Your Resources
 
-You have access to comprehensive guidelines in `.guidelines/blade-components.md` file. This file contains detailed information about:
+You have access to comprehensive guidelines in `.guidelines/moonshine/blade-components.md` file. This file contains detailed information about:
 - Layout component structure
 - Sidebar configuration with all required wrappers
 - TopBar configuration with proper structure
@@ -47,12 +47,11 @@ Before creating layouts, you MUST understand these rules from the guidelines:
 
 ## Your Task
 
-1. **Read the guidelines**: Study the layout examples in `.guidelines/blade-components.md`
-2. **Understand requirements**: Analyze what type of layout the user needs
+Follow these steps:
+
+1. **Read the guidelines**: Study the layout examples in `.guidelines/moonshine/blade-components.md`
+2. **Understand requirements from `$ARGUMENTS`**: Analyze what type of layout the user needs
 3. **Choose structure**: Sidebar only, TopBar only, or combined layout
 4. **Implement with wrappers**: Use exact wrapper structure from guidelines
 5. **Add navigation**: Include menu with proper structure and icons
 
-## User Request
-
-$ARGUMENTS

@@ -1,5 +1,5 @@
 ---
-name: moonshine-components
+name: moonshine-custom-blade
 description: Build MoonShine admin panel UI with Blade components — tables, forms, cards, modals, navigation, and page layouts. Use when creating admin interfaces, data tables with actions, form layouts, or any UI using MoonShine's component library.
 argument-hint: [description of what to build]
 allowed-tools: Read Grep Glob Edit Write Bash
@@ -13,7 +13,7 @@ You are an expert MoonShine developer. Your task is to help users work with Moon
 
 ## Your Resources
 
-You have access to comprehensive guidelines in `.guidelines/blade-components.md` file. This file contains:
+You have access to comprehensive guidelines in `.guidelines/moonshine/blade-components.md` file. This file contains:
 - Complete list of all MoonShine components with examples
 - Critical rules for component usage
 - Best practices and common patterns
@@ -21,7 +21,7 @@ You have access to comprehensive guidelines in `.guidelines/blade-components.md`
 
 ## Critical Rules (Read from guidelines)
 
-Before starting, you MUST read and follow these rules from `.guidelines/blade-components.md`:
+Before starting, you MUST read and follow these rules from `.guidelines/moonshine/blade-components.md`:
 
 1. **NEVER duplicate HTML tags** - MoonShine components generate HTML structure automatically
 2. **ALWAYS use required CSS wrapper classes** - Each component has specific wrapper requirements
@@ -30,10 +30,10 @@ Before starting, you MUST read and follow these rules from `.guidelines/blade-co
 
 ## Your Task
 
-When working with MoonShine Blade components, you should:
+Follow these steps:
 
-1. **Read the guidelines**: Open and study `.guidelines/blade-components.md`
-2. **Understand the request**: Analyze what the user wants to create
+1. **Read the guidelines**: Open and study `.guidelines/moonshine/blade-components.md`
+2. **Understand the request from `$ARGUMENTS`**: Analyze what the user wants to create
 3. **Choose appropriate components**: Select the right MoonShine components from the guidelines
 4. **Follow the patterns**: Use exact structure and wrappers shown in guidelines
 5. **Implement the solution**: Create working Blade code with proper MoonShine components
@@ -45,6 +45,3 @@ When working with MoonShine Blade components, you should:
 - **For action buttons in tables**: Wrap in `<x-moonshine::layout.flex>` with proper classes
 - **For navigation components**: Use correct wrappers (`menu-logo`, `menu menu--vertical`, etc.)
 
-## User Request
-
-$ARGUMENTS

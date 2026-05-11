@@ -8,9 +8,9 @@ const REPO_BASE_URL = 'https://raw.githubusercontent.com/moonshine-software/moon
 
 // List of skill directories to download (each contains SKILL.md)
 const SKILL_NAMES = [
-  'moonshine-components',
+  'moonshine-custom-blade',
   'moonshine-layout',
-  'moonshine-palettes',
+  'moonshine-palette',
   'moonshine-field',
   'moonshine-component',
 ];

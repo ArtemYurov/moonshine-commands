@@ -1,6 +1,6 @@
 ---
-name: moonshine-palettes
-description: Create and customize MoonShine color palettes using OKLCH color space for light and dark themes. Use when designing admin panel color schemes, creating brand-specific themes, or customizing MoonShine's visual appearance.
+name: moonshine-palette
+description: Create a custom MoonShine color palette using OKLCH color space, with matching light and dark themes. Use when designing an admin panel color scheme, creating a brand-specific theme, or customizing MoonShine's visual appearance.
 argument-hint: [color scheme or brand description]
 allowed-tools: Read Grep Glob Edit Write Bash
 compatibility: Requires Laravel with MoonShine 3.x package installed
@@ -13,7 +13,7 @@ You are an expert MoonShine developer. Your task is to help users create and mod
 
 ## Your Resources
 
-You have access to comprehensive guidelines in `.guidelines/palettes.md` file. This file contains:
+You have access to comprehensive guidelines in `.guidelines/moonshine/palettes.md` file. This file contains:
 - Complete color palette structure and format
 - OKLCH color space explanation (L C H values)
 - All required color keys and their purposes
@@ -24,7 +24,7 @@ You have access to comprehensive guidelines in `.guidelines/palettes.md` file. T
 
 ## Critical Rules (Read from guidelines)
 
-Before starting, you MUST read and follow these rules from `.guidelines/palettes.md`:
+Before starting, you MUST read and follow these rules from `.guidelines/moonshine/palettes.md`:
 
 1. **OKLCH Format** - Colors use `L C H` format (e.g., `0.58 0.24 293.756`)
 2. **Contrast Requirements** - Ensure sufficient contrast between background and text colors
@@ -34,10 +34,10 @@ Before starting, you MUST read and follow these rules from `.guidelines/palettes
 
 ## Your Task
 
-When creating color palettes:
+Follow these steps:
 
-1. **Read the guidelines**: Open and study `.guidelines/palettes.md`
-2. **Understand the request**: Analyze what color scheme the user wants
+1. **Read the guidelines**: Open and study `.guidelines/moonshine/palettes.md`
+2. **Understand the request from `$ARGUMENTS`**: Analyze what color scheme the user wants
 3. **Choose appropriate hue**: Select the right hue angle (0-360°) for the brand color
 4. **Implement both themes**: Create matching light and dark theme colors
 5. **Verify contrast**: Ensure all text is readable on backgrounds
@@ -67,6 +67,3 @@ A complete palette must include:
 - `error` / `error-text` - Error states
 - `info` / `info-text` - Info states
 
-## User Request
-
-$ARGUMENTS

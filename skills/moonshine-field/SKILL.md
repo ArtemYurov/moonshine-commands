@@ -13,7 +13,7 @@ You are an expert MoonShine developer specializing in custom field development. 
 
 ## Your Resources
 
-You have access to comprehensive guidelines in `.guidelines/fields-development.md` file. This file contains:
+You have access to comprehensive guidelines in `.guidelines/moonshine/fields-development.md` file. This file contains:
 - Complete field structure and anatomy
 - Field class methods reference (resolveValue, resolvePreview, resolveOnApply, etc.)
 - View template patterns with Alpine.js
@@ -23,7 +23,7 @@ You have access to comprehensive guidelines in `.guidelines/fields-development.m
 
 ## Critical Rules (Read from guidelines)
 
-Before starting, you MUST read and follow these rules from `.guidelines/fields-development.md`:
+Before starting, you MUST read and follow these rules from `.guidelines/moonshine/fields-development.md`:
 
 1. **Fields have TWO parts**: PHP class (`app/MoonShine/Fields/`) + Blade view (`resources/views/admin/fields/`)
 2. **Fluent methods MUST return `static`** - For method chaining
@@ -55,10 +55,10 @@ Read-only display in tables. The field shows formatted values, badges, images, e
 
 ## Your Task
 
-When creating custom fields:
+Follow these steps:
 
-1. **Read the guidelines**: Open and study `.guidelines/fields-development.md`
-2. **Understand the request**: What kind of field does the user need?
+1. **Read the guidelines**: Open and study `.guidelines/moonshine/fields-development.md`
+2. **Understand the request from `$ARGUMENTS`**: What kind of field does the user need?
 3. **Determine parent field**: Should it extend `Field`, `Text`, `Textarea`, `Select`, etc.?
 4. **Plan field structure**:
    - What properties does it need?
@@ -84,12 +84,20 @@ protected function viewData(): array
 {
     return [
         // Don't pass 'value' - it's AUTOMATICALLY available!
+        // The base Field class provides: value, attributes, label, column, errors
+
         // Only pass YOUR custom data:
         'isHighlighted' => $this->isHighlighted,
         'maxStars' => $this->maxStars,
+        'apiKey' => $this->apiKey,
     ];
 }
 ```
+
+**CRITICAL:**
+- `value`, `attributes`, `label`, `column`, `errors` are ALWAYS available via `systemViewData()`
+- You DON'T need to pass them!
+- Only pass ADDITIONAL custom properties
 
 **`resolveValue()`** - Get value for form input:
 ```php
@@ -103,9 +111,11 @@ protected function resolveValue(): mixed
 ```php
 protected function resolvePreview(): Renderable|string
 {
-    return (string) $this->toFormattedValue();
+    return (string) $this->toFormattedValue(); // Use toFormattedValue() for display
 }
 ```
+
+**IMPORTANT:** Use `toFormattedValue()` in `resolvePreview()`, NOT `toValue()`!
 
 **`resolveOnApply()`** - Save to database:
 ```php
@@ -113,7 +123,18 @@ protected function resolveOnApply(): ?Closure
 {
     return function (mixed $item): mixed {
         data_set($item, $this->getColumn(), $this->getRequestValue());
-        return $item; // MUST return
+        return $item; // ← MUST return
+    };
+}
+```
+
+**`resolveOnAfterApply()`** - For relationships (has ID):
+```php
+protected function resolveOnAfterApply(): ?Closure
+{
+    return function (mixed $item): mixed {
+        $item->tags()->sync($this->getRequestValue());
+        return $item;
     };
 }
 ```
@@ -123,27 +144,203 @@ protected function resolveOnApply(): ?Closure
 protected function prepareBeforeRender(): void
 {
     parent::prepareBeforeRender();
-    // Add attributes, prepare data here
+
+    // Prepare attributes
+    if ($this->width && $this->height) {
+        $this->customAttributes([
+            'style' => "width: {$this->width}px; height: {$this->height}px;",
+        ]);
+    }
+
+    // Add Alpine.js directives
+    if ($this->hasAutocomplete) {
+        $this->customAttributes([
+            'x-data' => 'autocomplete',
+            'x-init' => 'init()',
+        ]);
+    }
+
+    // Remove attributes for virtual fields
+    if ($this->isVirtual) {
+        $this->removeAttribute('name');
+    }
+}
+```
+
+**IMPORTANT:** Move ALL logic to `prepareBeforeRender()`, NOT in Blade `@php` blocks!
+
+### Fluent Methods
+
+Methods that configure the field. MUST return `static`:
+
+```php
+public function variant(string $variant): static
+{
+    $this->variant = $variant;
+    return $this; // ← MUST return $this
 }
 ```
 
 ### Blade Template
 
+Use `@props` to receive data. System data is ALWAYS available:
+
 ```blade
 @props([
-    'value',
-    'attributes',
-    'label',
-    'column',
-    'errors',
+    // System data (ALWAYS available - don't need to pass in viewData):
+    'value',       // ← From systemViewData()
+    'attributes',  // ← From systemViewData()
+    'label',       // ← From systemViewData()
+    'column',      // ← From systemViewData()
+    'errors',      // ← From systemViewData()
+
+    // Your custom data from viewData():
     'isHighlighted' => false,
+    'maxStars' => 5,
 ])
 
-<div {{ $attributes }}>
-    <input type="text" value="{{ $value }}" />
+<div>
+    <!-- Use system data directly -->
+    <label>{{ $label }}</label>
+
+    <!-- Use attributes bag -->
+    <input type="text" value="{{ $value }}" {{ $attributes }} />
+
+    <!-- Use custom data -->
+    @if($isHighlighted)
+        <div class="highlight">★★★</div>
+    @endif
 </div>
 ```
 
-## User Request
+**Key points:**
+- The `$attributes` bag contains all HTML attributes (name, id, class, data-*, etc.)
+- `value`, `attributes`, `label`, `column`, `errors` are ALWAYS available
+- You only need to declare your CUSTOM properties in `@props`
 
-$ARGUMENTS
+### Alpine.js Integration
+
+MoonShine includes Alpine.js for interactivity.
+
+**IMPORTANT for multiple fields:** Always use unique IDs and pass config to Alpine components!
+
+```blade
+<!-- CORRECT - Supports multiple fields on one page -->
+<div
+    x-data="myField({
+        value: {{ $value ?? 0 }},
+        fieldId: '{{ $attributes->get('id', 'field-' . uniqid()) }}'
+    })"
+    {{ $attributes->except(['name']) }}
+>
+    <button @click="increment">+</button>
+    <span x-text="count"></span>
+    <input type="hidden" {{ $attributes->only(['name']) }} x-model="count" />
+</div>
+```
+
+**JavaScript:**
+```js
+Alpine.data('myField', (config) => ({
+    fieldId: config.fieldId,
+    count: config.value,
+
+    increment() {
+        this.count++;
+    }
+}));
+```
+
+**Why this matters:**
+- Multiple fields work independently
+- No ID conflicts
+- Each field has its own state
+
+### Assets (CSS/JS)
+
+If your field needs external libraries:
+
+**IMPORTANT:** The `assets()` method MUST be `protected`, not `public`!
+
+```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
+protected function assets(): array
+{
+    return [
+        Css::make('/css/my-field.css'),
+        Js::make('/js/my-field.js'),
+    ];
+}
+```
+
+## Common Field Patterns
+
+### Read-Only Field (Preview Only)
+
+```php
+protected function resolveValue(): mixed
+{
+    return $this->preview(); // Always show preview
+}
+
+protected function resolveOnApply(): ?Closure
+{
+    return static fn($item) => $item; // Don't save
+}
+
+public function isCanApply(): bool
+{
+    return false;
+}
+```
+
+### Conditional Preview Display
+
+```php
+protected function resolvePreview(): Renderable|string
+{
+    if ($this->isBoolean) {
+        return Boolean::make((bool) $this->toFormattedValue())->render();
+    }
+
+    if ($this->isImage) {
+        return Thumbnails::make($this->toValue())->render();
+    }
+
+    return (string) $this->toFormattedValue();
+}
+```
+
+### JSON Field
+
+```php
+protected function resolveOnApply(): ?Closure
+{
+    return function (mixed $item): mixed {
+        $value = $this->getRequestValue();
+        data_set($item, $this->getColumn(), json_encode($value));
+        return $item;
+    };
+}
+```
+
+## Field Artisan Command
+
+Users can also generate field scaffolding with:
+```bash
+php artisan moonshine:field FieldName
+```
+
+This creates both PHP class and Blade view with proper structure.
+
+## Examples to Reference
+
+The guidelines contain complete examples:
+- Preview field (read-only with conditional display)
+- Rating field (interactive stars with Alpine.js)
+- Quill editor field (external library integration)
+- JSON editor field
+- File upload field
+

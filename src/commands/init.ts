@@ -108,11 +108,11 @@ export async function initCommand() {
   console.log(chalk.cyan('Next steps:'));
   console.log(chalk.gray('  1. Open your project in Claude Code'));
   console.log(chalk.gray('  2. Use skills (Claude auto-loads them, or invoke via /):'));
-  console.log(chalk.cyan('     /moonshine-components') + chalk.gray(' - Build UI with Blade components'));
+  console.log(chalk.cyan('     /moonshine-custom-blade') + chalk.gray(' - Build admin panel UI with Blade components'));
   console.log(chalk.cyan('     /moonshine-layout') + chalk.gray(' - Create layouts'));
-  console.log(chalk.cyan('     /moonshine-palettes') + chalk.gray(' - Create color palettes'));
+  console.log(chalk.cyan('     /moonshine-palette') + chalk.gray(' - Create a color palette'));
   console.log(chalk.cyan('     /moonshine-field') + chalk.gray(' - Create custom fields'));
   console.log(chalk.cyan('     /moonshine-component') + chalk.gray(' - Create custom components'));
-  console.log(chalk.gray('\n  3. Example: ') + chalk.cyan('/moonshine-components create a user table with actions'));
+  console.log(chalk.gray('\n  3. Example: ') + chalk.cyan('/moonshine-custom-blade create a users page with table and edit modal'));
   console.log();
 }

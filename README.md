@@ -46,9 +46,9 @@ Follow the prompts to:
 your-moonshine-project/
 ├── .claude/                    # Claude-specific files
 │   └── skills/
-│       ├── moonshine-components/SKILL.md
+│       ├── moonshine-custom-blade/SKILL.md
 │       ├── moonshine-layout/SKILL.md
-│       ├── moonshine-palettes/SKILL.md
+│       ├── moonshine-palette/SKILL.md
 │       ├── moonshine-field/SKILL.md
 │       └── moonshine-component/SKILL.md
 └── .guidelines/                # Shared guidelines
@@ -65,16 +65,16 @@ your-moonshine-project/
 
 After initialization, you can invoke these skills in Claude (also available as slash commands):
 
-#### `/moonshine-components` - Work with Components
+#### `/moonshine-custom-blade` - Build admin panel UI
 
-Create any MoonShine component with proper structure:
-
-```
-/moonshine-components create a user table with name, email, status badges, and action buttons
-```
+Build MoonShine admin panel UI with Blade components — tables, forms, cards, modals, navigation, and page layouts:
 
 ```
-/moonshine-components create a modal form for adding new products
+/moonshine-custom-blade create a users page with table and edit modal
+```
+
+```
+/moonshine-custom-blade create a dashboard with metrics, cards, and a recent activity table
 ```
 
 #### `/moonshine-layout` - Create Layouts
@@ -89,16 +89,16 @@ Generate complete layouts with navigation:
 /moonshine-layout create a top navigation bar with horizontal menu
 ```
 
-#### `/moonshine-palettes` - Create Color Palettes
+#### `/moonshine-palette` - Create Color Palette
 
-Create and modify custom color palettes using OKLCH color space:
-
-```
-/moonshine-palettes create a blue ocean theme with hue 240
-```
+Create or modify a custom color palette using OKLCH color space (one palette with light + dark themes per invocation):
 
 ```
-/moonshine-palettes create a purple palette for dark and light themes
+/moonshine-palette create a blue ocean theme with hue 240
+```
+
+```
+/moonshine-palette create a purple palette for dark and light themes
 ```
 
 #### `/moonshine-field` - Create Custom Fields
@@ -197,7 +197,7 @@ Check initialization status and versions.
 ### Creating a User Management Interface
 
 ```
-/moonshine-components create a users table with:
+/moonshine-custom-blade create a users table with:
 - Avatars and name columns
 - Status badges (active/inactive)
 - Role badges with different colors
@@ -213,7 +213,7 @@ The AI will generate a complete, working table with:
 ### Building a Custom Color Palette
 
 ```
-/moonshine-palettes create a professional teal palette with:
+/moonshine-palette create a professional teal palette with:
 - Hue angle 180 (teal/cyan)
 - Both light and dark themes
 - Proper contrast ratios
@@ -261,11 +261,11 @@ The AI will generate:
 │         User's MoonShine Project        │
 ├─────────────────────────────────────────┤
 │  .claude/skills/                        │
-│  ├── moonshine-components/SKILL.md      │
+│  ├── moonshine-custom-blade/SKILL.md      │
 │  │   → Reads .guidelines/moonshine/     │
 │  ├── moonshine-layout/SKILL.md          │
 │  │   → Reads .guidelines/moonshine/     │
-│  ├── moonshine-palettes/SKILL.md        │
+│  ├── moonshine-palette/SKILL.md        │
 │  │   → Reads .guidelines/moonshine/     │
 │  ├── moonshine-field/SKILL.md           │
 │  │   → Reads .guidelines/moonshine/     │
