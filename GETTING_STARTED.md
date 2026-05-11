@@ -1,28 +1,17 @@
-# Getting Started with Forty-Five
+# Getting Started with MoonShine Skills
 
-Welcome to Forty-Five! This guide will help you set up and start using AI-powered development for your MoonShine projects.
+Welcome to MoonShine Skills! This guide will help you set up and start using AI-powered development for your MoonShine projects.
 
-## What is Forty-Five?
+## What is MoonShine Skills?
 
-Forty-Five is a CLI tool inspired by GitHub Speckit that brings AI assistance to MoonShine development. It installs:
+MoonShine Skills is a CLI tool inspired by GitHub Speckit that brings AI assistance to MoonShine development. It installs:
 - **Slash commands** for your AI agent (Claude, Cursor, etc.)
 - **Comprehensive guidelines** about MoonShine components
 - **Best practices** to generate production-ready code
 
 ## Installation
 
-### Step 1: Install Globally
-
-```bash
-npm install -g @moonshine-software/forty-five
-```
-
-Verify installation:
-```bash
-forty-five --version
-```
-
-### Step 2: Navigate to Your Project
+### Step 1: Navigate to Your Project
 
 ```bash
 cd /path/to/your-moonshine-project
@@ -30,15 +19,17 @@ cd /path/to/your-moonshine-project
 
 Make sure you're in the root directory with `composer.json`.
 
-### Step 3: Initialize
+### Step 2: Initialize via `npx`
 
 ```bash
-forty-five init
+npx github:ArtemYurov/moonshine-skills init
 ```
+
+No global install required — `npx` runs the CLI directly from this repository on every invocation.
 
 You'll see:
 ```
-🌙 Forty-Five Initialization
+🌙 MoonShine Skills Initialization
 
 Setting up AI-powered development toolkit for MoonShine
 
@@ -51,21 +42,23 @@ Setting up AI-powered development toolkit for MoonShine
 Select your AI agent (currently only Claude is supported).
 
 The tool will:
-1. ✅ Create `.claude/commands/` directory
-2. ✅ Create `.guidelines/` directory
-3. ✅ Download latest commands from GitHub
-4. ✅ Download latest guidelines from GitHub
+1. Create `.claude/skills/` directory
+2. Create `.guidelines/` directory
+3. Download latest skills from GitHub
+4. Download latest guidelines from GitHub
 
-### Step 4: Verify Setup
+### Step 3: Verify Setup
 
 Check that these directories were created:
 
 ```bash
-ls -la .claude/commands/
+ls -la .claude/skills/
 # Should show:
-# forty-five.components.md
-# forty-five.layout.md
-# forty-five.palettes.md
+# moonshine-components/
+# moonshine-layout/
+# moonshine-palettes/
+# moonshine-field/
+# moonshine-component/
 
 ls -la .guidelines/
 # Should show:
@@ -73,7 +66,7 @@ ls -la .guidelines/
 # palettes.md
 ```
 
-## Using Forty-Five
+## Using MoonShine Skills
 
 ### In Claude Code
 
@@ -82,7 +75,7 @@ ls -la .guidelines/
 2. **Use slash commands** by typing `/` followed by the command name:
 
    ```
-   /forty-five.components create a user table with actions
+   /moonshine-components create a user table with actions
    ```
 
 3. **Claude will:**
@@ -93,63 +86,63 @@ ls -la .guidelines/
 
 ### Available Commands
 
-#### `/forty-five.components`
+#### `/moonshine-components`
 
 Create any MoonShine component with proper structure.
 
 **Examples:**
 
 ```
-/forty-five.components create a table with user data, status badges, and edit/delete buttons
+/moonshine-components create a table with user data, status badges, and edit/delete buttons
 ```
 
 ```
-/forty-five.components create a modal form for creating new products with fields: name, price, description
+/moonshine-components create a modal form for creating new products with fields: name, price, description
 ```
 
 ```
-/forty-five.components create a card with metrics showing total users, revenue, and orders
+/moonshine-components create a card with metrics showing total users, revenue, and orders
 ```
 
-#### `/forty-five.layout`
+#### `/moonshine-layout`
 
 Generate complete layouts with navigation.
 
 **Examples:**
 
 ```
-/forty-five.layout create a sidebar layout with logo, menu items (Dashboard, Users, Settings), and theme switcher
+/moonshine-layout create a sidebar layout with logo, menu items (Dashboard, Users, Settings), and theme switcher
 ```
 
 ```
-/forty-five.layout create a top navigation bar with horizontal menu
+/moonshine-layout create a top navigation bar with horizontal menu
 ```
 
 ```
-/forty-five.layout create a responsive layout with mobile menu support
+/moonshine-layout create a responsive layout with mobile menu support
 ```
 
-#### `/forty-five.palettes`
+#### `/moonshine-palettes`
 
 Create and modify custom color palettes using OKLCH color space.
 
 **Examples:**
 
 ```
-/forty-five.palettes create a blue ocean theme with hue 240
+/moonshine-palettes create a blue ocean theme with hue 240
 ```
 
 ```
-/forty-five.palettes create a purple palette for dark and light themes
+/moonshine-palettes create a purple palette for dark and light themes
 ```
 
 ```
-/forty-five.palettes modify the existing palette to use green as primary color (hue 142)
+/moonshine-palettes modify the existing palette to use green as primary color (hue 142)
 ```
 
 ## What Gets Generated
 
-When you use Forty-Five commands, Claude generates code that:
+When you use MoonShine Skills commands, Claude generates code that:
 
 ✅ **Follows MoonShine conventions**
 - Correct component usage
@@ -173,7 +166,7 @@ Let's create a complete user management page:
 ### 1. Create the Layout
 
 ```
-/forty-five.layout create a sidebar layout with:
+/moonshine-layout create a sidebar layout with:
 - Logo linked to homepage
 - Menu items: Dashboard, Users, Settings, Analytics
 - Theme switcher
@@ -185,7 +178,7 @@ Claude will generate a complete layout with proper structure.
 ### 2. Create the Users Table
 
 ```
-/forty-five.components create a users table with columns:
+/moonshine-components create a users table with columns:
 - ID
 - Avatar (image)
 - Name
@@ -202,7 +195,7 @@ Claude will create a table with all MoonShine components properly integrated.
 ### 3. Add a Form Modal
 
 ```
-/forty-five.components create a modal for adding new users with fields:
+/moonshine-components create a modal for adding new users with fields:
 - Name (text input)
 - Email (email input)
 - Role (select: Admin, Editor, User)
@@ -213,7 +206,7 @@ Claude will create a table with all MoonShine components properly integrated.
 ### 4. Create a Custom Palette
 
 ```
-/forty-five.palettes create a professional blue palette with hue 240 for the admin panel
+/moonshine-palettes create a professional blue palette with hue 240 for the admin panel
 ```
 
 Claude will generate a complete color palette with both light and dark themes!
@@ -297,7 +290,7 @@ Color system and theme customization:
 **Problem:** Can't initialize in directory
 
 **Solution:**
-- Run `forty-five init` in your Laravel project root
+- Run `moonshine-skills init` in your Laravel project root
 - Make sure you're in a MoonShine project
 
 ## Next Steps
@@ -308,7 +301,7 @@ Color system and theme customization:
    - See examples and patterns
 
 2. **Try Simple Commands**
-   - Start with `/forty-five.components`
+   - Start with `/moonshine-components`
    - Create a simple table or form
    - Get familiar with the workflow
 
@@ -325,9 +318,9 @@ Color system and theme customization:
 ## Resources
 
 - **Documentation**: [README.md](README.md)
-- **GitHub**: https://github.com/moonshine-software/forty-five
+- **GitHub**: https://github.com/ArtemYurov/moonshine-skills
 - **MoonShine Docs**: https://moonshine-laravel.com
-- **Issues**: https://github.com/moonshine-software/forty-five/issues
+- **Issues**: https://github.com/ArtemYurov/moonshine-skills/issues
 
 ## Support
 
@@ -339,4 +332,4 @@ Need help?
 
 ---
 
-Happy coding with Forty-Five! 🌙
+Happy coding with MoonShine Skills! 🌙

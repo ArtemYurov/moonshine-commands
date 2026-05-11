@@ -5,12 +5,11 @@ import { existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import type { Agent, InitConfig } from '../types/index.js';
 import { getAgentChoices, getAgentConfig } from '../agents.js';
-import { downloadCommands } from '../services/commands-downloader.js';
 import { downloadGuidelines } from '../services/guidelines-downloader.js';
 import { downloadSkills } from '../services/skills-downloader.js';
 
 export async function initCommand() {
-  console.log(chalk.cyan.bold('\n🌙 Forty-Five Initialization\n'));
+  console.log(chalk.cyan.bold('\n🌙 MoonShine Skills Initialization\n'));
   console.log(chalk.gray('Setting up AI-powered development toolkit for MoonShine\n'));
 
   // Check if we're in a valid project directory
@@ -44,13 +43,8 @@ export async function initCommand() {
 
   try {
     const agentConfig = getAgentConfig(answers.agent);
-    const commandsDir = join(cwd, agentConfig.configDir, 'commands');
     const skillsDir = join(cwd, agentConfig.skillsDir);
     const guidelinesDir = join(cwd, '.guidelines');
-
-    if (!existsSync(commandsDir)) {
-      mkdirSync(commandsDir, { recursive: true });
-    }
 
     if (!existsSync(skillsDir)) {
       mkdirSync(skillsDir, { recursive: true });
@@ -63,27 +57,6 @@ export async function initCommand() {
     spinner.succeed('Directories created');
   } catch (error) {
     spinner.fail('Failed to create directories');
-    console.error(chalk.red(error));
-    process.exit(1);
-  }
-
-  // Download commands
-  spinner.start('Downloading Forty-Five commands...');
-
-  try {
-    const commandsResult = await downloadCommands(config);
-
-    if (commandsResult.success) {
-      spinner.succeed(`Downloaded ${commandsResult.filesDownloaded} commands`);
-    } else {
-      spinner.warn(`Downloaded ${commandsResult.filesDownloaded} commands with some errors`);
-      if (commandsResult.errors.length > 0) {
-        console.log(chalk.yellow('\nErrors:'));
-        commandsResult.errors.forEach(err => console.log(chalk.yellow(`  - ${err}`)));
-      }
-    }
-  } catch (error) {
-    spinner.fail('Failed to download commands');
     console.error(chalk.red(error));
     process.exit(1);
   }
@@ -131,21 +104,15 @@ export async function initCommand() {
   }
 
   // Success message
-  console.log(chalk.green.bold('\n✨ Forty-Five initialized successfully!\n'));
+  console.log(chalk.green.bold('\n✨ MoonShine Skills initialized successfully!\n'));
   console.log(chalk.cyan('Next steps:'));
   console.log(chalk.gray('  1. Open your project in Claude Code'));
-  console.log(chalk.gray('  2. Use slash commands:'));
-  console.log(chalk.cyan('     /forty-five.components') + chalk.gray(' - Work with Blade components'));
-  console.log(chalk.cyan('     /forty-five.layout') + chalk.gray(' - Create layouts'));
-  console.log(chalk.cyan('     /forty-five.palettes') + chalk.gray(' - Create color palettes'));
-  console.log(chalk.cyan('     /forty-five.field') + chalk.gray(' - Create custom fields'));
-  console.log(chalk.cyan('     /forty-five.component') + chalk.gray(' - Create custom components'));
-  console.log(chalk.gray('\n  3. Or use skills:'));
-  console.log(chalk.cyan('     /moonshine-components') + chalk.gray(' - Blade components context'));
-  console.log(chalk.cyan('     /moonshine-layout') + chalk.gray(' - Layout creation context'));
-  console.log(chalk.cyan('     /moonshine-palettes') + chalk.gray(' - Color palettes context'));
-  console.log(chalk.cyan('     /moonshine-field') + chalk.gray(' - Custom field development'));
-  console.log(chalk.cyan('     /moonshine-component') + chalk.gray(' - Custom component development'));
-  console.log(chalk.gray('\n  4. Example: ') + chalk.cyan('/forty-five.components create a user table with actions'));
+  console.log(chalk.gray('  2. Use skills (Claude auto-loads them, or invoke via /):'));
+  console.log(chalk.cyan('     /moonshine-components') + chalk.gray(' - Build UI with Blade components'));
+  console.log(chalk.cyan('     /moonshine-layout') + chalk.gray(' - Create layouts'));
+  console.log(chalk.cyan('     /moonshine-palettes') + chalk.gray(' - Create color palettes'));
+  console.log(chalk.cyan('     /moonshine-field') + chalk.gray(' - Create custom fields'));
+  console.log(chalk.cyan('     /moonshine-component') + chalk.gray(' - Create custom components'));
+  console.log(chalk.gray('\n  3. Example: ') + chalk.cyan('/moonshine-components create a user table with actions'));
   console.log();
 }

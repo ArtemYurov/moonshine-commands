@@ -1,8 +1,8 @@
-# 🌙 Forty-Five
+# 🌙 MoonShine Skills
 
 > AI-powered development toolkit for MoonShine - Inspired by GitHub Speckit
 
-Forty-Five is a CLI tool that brings AI-powered development assistance to your MoonShine projects. Install guidelines and slash commands that help AI agents (like Claude) understand MoonShine components and generate production-ready code.
+MoonShine Skills is a CLI tool that brings AI-powered development assistance to your MoonShine projects. Install guidelines and slash commands that help AI agents (like Claude) understand MoonShine components and generate production-ready code.
 
 ## ✨ Features
 
@@ -16,25 +16,18 @@ Forty-Five is a CLI tool that brings AI-powered development assistance to your M
 
 ### Installation
 
-Install globally via npm:
-
-```bash
-npm install -g @moonshine-software/forty-five
-```
-
-### Initialize in Your Project
-
-Navigate to your MoonShine project and run:
+Run via `npx` directly from this repository — no global install required:
 
 ```bash
 cd your-moonshine-project
-forty-five init
+npx github:ArtemYurov/moonshine-skills init
 ```
+
 Note: The folder must be owned by the current user.
 
 Follow the prompts to:
 1. Select your AI agent (Claude, Cursor, etc.)
-2. Download commands and guidelines
+2. Download skills and guidelines
 3. Set up configuration
 
 ### Project Structure After Init
@@ -42,12 +35,12 @@ Follow the prompts to:
 ```
 your-moonshine-project/
 ├── .claude/                    # Claude-specific files
-│   └── commands/
-│       ├── forty-five.components.md
-│       ├── forty-five.layout.md
-│       ├── forty-five.palettes.md
-│       ├── forty-five.field.md
-│       └── forty-five.component.md
+│   └── skills/
+│       ├── moonshine-components/SKILL.md
+│       ├── moonshine-layout/SKILL.md
+│       ├── moonshine-palettes/SKILL.md
+│       ├── moonshine-field/SKILL.md
+│       └── moonshine-component/SKILL.md
 └── .guidelines/                # Shared guidelines
     ├── blade-components.md
     ├── palettes.md
@@ -61,69 +54,69 @@ your-moonshine-project/
 
 After initialization, you can use these slash commands in Claude:
 
-#### `/forty-five.components` - Work with Components
+#### `/moonshine-components` - Work with Components
 
 Create any MoonShine component with proper structure:
 
 ```
-/forty-five.components create a user table with name, email, status badges, and action buttons
+/moonshine-components create a user table with name, email, status badges, and action buttons
 ```
 
 ```
-/forty-five.components create a modal form for adding new products
+/moonshine-components create a modal form for adding new products
 ```
 
-#### `/forty-five.layout` - Create Layouts
+#### `/moonshine-layout` - Create Layouts
 
 Generate complete layouts with navigation:
 
 ```
-/forty-five.layout create a sidebar layout with logo, menu, and theme switcher
+/moonshine-layout create a sidebar layout with logo, menu, and theme switcher
 ```
 
 ```
-/forty-five.layout create a top navigation bar with horizontal menu
+/moonshine-layout create a top navigation bar with horizontal menu
 ```
 
-#### `/forty-five.palettes` - Create Color Palettes
+#### `/moonshine-palettes` - Create Color Palettes
 
 Create and modify custom color palettes using OKLCH color space:
 
 ```
-/forty-five.palettes create a blue ocean theme with hue 240
+/moonshine-palettes create a blue ocean theme with hue 240
 ```
 
 ```
-/forty-five.palettes create a purple palette for dark and light themes
+/moonshine-palettes create a purple palette for dark and light themes
 ```
 
-#### `/forty-five.field` - Create Custom Fields
+#### `/moonshine-field` - Create Custom Fields
 
 Create custom MoonShine fields with proper structure and methods:
 
 ```
-/forty-five.field create a rating field with stars from 1 to 5
+/moonshine-field create a rating field with stars from 1 to 5
 ```
 
 ```
-/forty-five.field create a color picker field with preview
+/moonshine-field create a color picker field with preview
 ```
 
-#### `/forty-five.component` - Create Custom Components
+#### `/moonshine-component` - Create Custom Components
 
 Create custom MoonShine components for UI decoration:
 
 ```
-/forty-five.component create an alert component with different types
+/moonshine-component create an alert component with different types
 ```
 
 ```
-/forty-five.component create a stats card with icon and value
+/moonshine-component create a stats card with icon and value
 ```
 
 ## 🎯 What Gets Generated
 
-Forty-Five ensures AI agents generate code that follows MoonShine best practices:
+MoonShine Skills ensures AI agents generate code that follows MoonShine best practices:
 
 ✅ **Correct HTML Structure** - No duplicate HTML tags, proper component nesting
 ✅ **Required Wrappers** - All CSS classes and wrappers in place
@@ -165,20 +158,20 @@ The guidelines provide comprehensive documentation for:
 
 ## 🔧 CLI Commands
 
-### `forty-five init`
+### `moonshine-skills init`
 
-Initialize Forty-Five in your project.
+Initialize MoonShine Skills in your project.
 
 **Options:**
 - Interactive agent selection
 - Automatic directory creation
 - Downloads latest commands and guidelines
 
-### `forty-five update` (Coming Soon)
+### `moonshine-skills update` (Coming Soon)
 
 Update commands and guidelines to the latest version.
 
-### `forty-five status` (Coming Soon)
+### `moonshine-skills status` (Coming Soon)
 
 Check initialization status and versions.
 
@@ -193,7 +186,7 @@ Check initialization status and versions.
 ### Creating a User Management Interface
 
 ```
-/forty-five.components create a users table with:
+/moonshine-components create a users table with:
 - Avatars and name columns
 - Status badges (active/inactive)
 - Role badges with different colors
@@ -209,7 +202,7 @@ The AI will generate a complete, working table with:
 ### Building a Custom Color Palette
 
 ```
-/forty-five.palettes create a professional teal palette with:
+/moonshine-palettes create a professional teal palette with:
 - Hue angle 180 (teal/cyan)
 - Both light and dark themes
 - Proper contrast ratios
@@ -219,7 +212,7 @@ The AI will generate a complete, working table with:
 ### Creating a Custom Field
 
 ```
-/forty-five.field create a JSON editor field that:
+/moonshine-field create a JSON editor field that:
 - Displays formatted JSON in a textarea
 - Has syntax highlighting
 - Validates JSON on input
@@ -236,7 +229,7 @@ The AI will generate:
 ### Creating a Custom Component
 
 ```
-/forty-five.component create a stats card component that:
+/moonshine-component create a stats card component that:
 - Shows an icon, value, and label
 - Supports different colors
 - Value can be dynamic (closure)
@@ -256,17 +249,17 @@ The AI will generate:
 ┌─────────────────────────────────────────┐
 │         User's MoonShine Project        │
 ├─────────────────────────────────────────┤
-│  .claude/commands/                      │
-│  ├── forty-five.components.md          │
-│  │   → Reads .guidelines/              │
-│  ├── forty-five.layout.md              │
-│  │   → Reads .guidelines/              │
-│  ├── forty-five.palettes.md            │
-│  │   → Reads .guidelines/              │
-│  ├── forty-five.field.md               │
-│  │   → Reads .guidelines/              │
-│  └── forty-five.component.md           │
-│      → Reads .guidelines/              │
+│  .claude/skills/                        │
+│  ├── moonshine-components/SKILL.md      │
+│  │   → Reads .guidelines/               │
+│  ├── moonshine-layout/SKILL.md          │
+│  │   → Reads .guidelines/               │
+│  ├── moonshine-palettes/SKILL.md        │
+│  │   → Reads .guidelines/               │
+│  ├── moonshine-field/SKILL.md           │
+│  │   → Reads .guidelines/               │
+│  └── moonshine-component/SKILL.md       │
+│      → Reads .guidelines/               │
 │                                         │
 │  .guidelines/                           │
 │  ├── blade-components.md               │
@@ -280,10 +273,10 @@ The AI will generate:
 
 Guidelines and commands are downloaded from the official repository:
 ```
-https://github.com/moonshine-software/forty-five
+https://github.com/ArtemYurov/moonshine-skills
 ```
 
-When you run `forty-five init`, it fetches:
+When you run `moonshine-skills init`, it fetches:
 - Latest command files for your selected agent
 - Latest guideline files
 - Ensures you have the most up-to-date documentation
@@ -307,8 +300,8 @@ Make sure the AI agent can access `.guidelines/` directory. Commands are configu
 
 ```bash
 # Clone repository
-git clone https://github.com/moonshine-software/forty-five.git
-cd forty-five
+git clone https://github.com/ArtemYurov/moonshine-skills.git
+cd moonshine-skills
 
 # Install dependencies
 npm install
@@ -319,7 +312,7 @@ npm run build
 # Test locally
 npm link
 cd /path/to/your-project
-forty-five init
+moonshine-skills init
 ```
 
 ## 🤝 Contributing
@@ -339,8 +332,8 @@ MIT License - see LICENSE file for details.
 ## 🔗 Links
 
 - [MoonShine Documentation](https://moonshine-laravel.com)
-- [GitHub Repository](https://github.com/moonshine-software/forty-five)
-- [Report Issues](https://github.com/moonshine-software/forty-five/issues)
+- [GitHub Repository](https://github.com/ArtemYurov/moonshine-skills)
+- [Report Issues](https://github.com/ArtemYurov/moonshine-skills/issues)
 
 ---
 

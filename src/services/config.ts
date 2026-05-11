@@ -9,6 +9,6 @@ export async function createConfigFile(config: InitConfig): Promise<void> {
     initialized: new Date().toISOString(),
   };
 
-  const configPath = join(config.projectPath, '.forty-five.json');
+  const configPath = join(config.projectPath, '.moonshine-skills.json');
   writeFileSync(configPath, JSON.stringify(configContent, null, 2), 'utf-8');
 }

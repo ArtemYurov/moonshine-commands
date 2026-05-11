@@ -3,8 +3,8 @@ import { join } from 'path';
 import fetch from 'node-fetch';
 import type { InitConfig, DownloadResult } from '../types/index.js';
 
-const REPO_RAW_URL = 'https://raw.githubusercontent.com/moonshine-software/forty-five/main';
-const REPO_API_URL = 'https://api.github.com/repos/moonshine-software/forty-five/contents/guidelines';
+const REPO_RAW_URL = 'https://raw.githubusercontent.com/ArtemYurov/moonshine-skills/main';
+const REPO_API_URL = 'https://api.github.com/repos/ArtemYurov/moonshine-skills/contents/guidelines';
 
 interface GitHubContentItem {
   name: string;

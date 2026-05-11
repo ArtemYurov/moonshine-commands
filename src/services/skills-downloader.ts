@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import type { InitConfig, DownloadResult } from '../types/index.js';
 import { getAgentConfig } from '../agents.js';
 
-const REPO_BASE_URL = 'https://raw.githubusercontent.com/moonshine-software/forty-five/main';
+const REPO_BASE_URL = 'https://raw.githubusercontent.com/ArtemYurov/moonshine-skills/main';
 
 // List of skill directories to download (each contains SKILL.md)
 const SKILL_NAMES = [

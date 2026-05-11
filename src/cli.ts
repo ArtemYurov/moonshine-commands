@@ -8,13 +8,13 @@ import { packageJson } from './utils/package.js';
 const program = new Command();
 
 program
-  .name('forty-five')
-  .description('AI-powered development toolkit for MoonShine - inspired by GitHub Speckit')
+  .name('moonshine-skills')
+  .description('MoonShine Skills — AI-powered development toolkit for MoonShine')
   .version(packageJson.version);
 
 program
   .command('init')
-  .description('Initialize Forty-Five in your MoonShine project')
+  .description('Initialize MoonShine Skills in your MoonShine project')
   .action(initCommand);
 
 program.parse(process.argv);
